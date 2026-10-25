@@ -6,7 +6,7 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 
 - Login por e-mail, sem senha (link mágico).
 - Primeiro acesso em etapas (uma pergunta por tela), montando as 4 camadas de contexto, com resumo no final.
-- Tela inicial com a galáxia viva e o anel "toque para conversar": você fala, a transcrição aparece ao vivo e, ao terminar a fala, o chat abre sozinho. O campo de digitar continua disponível, e as decisões recentes aparecem em cartões.
+- Tela inicial com o anel de luz animado (fios em longa exposição, névoa e poeira) e o anel "toque para conversar": você fala, a transcrição aparece ao vivo e, ao terminar a fala, o chat abre sozinho. O campo de digitar continua disponível, e as decisões recentes aparecem em cartões.
 - A conversa começa pela situação: a IA cruza a fala com o cérebro do usuário (decisões em andamento, impactadas, conflitos e aprendizados), identifica quem decide (RAPID) e quem é afetado, e só então define a decisão que cabe ao usuário.
 - Decisão guiada: relato → perguntas que mudam a análise → caminhos com recomendação → registro (confiança, sinal de sucesso, data de revisão) → próximos passos com responsável e prazo.
 - Entrada por voz no navegador (Chrome, Edge e Safari). No Firefox, o botão do microfone não aparece.
