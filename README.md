@@ -5,7 +5,7 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 ## O que tem nesta versão
 
 - Login por e-mail, sem senha (link mágico).
-- Primeiro acesso em conversa, montando as 4 camadas de contexto.
+- Primeiro acesso em etapas (uma pergunta por tela), montando as 4 camadas de contexto, com resumo no final.
 - Decisão guiada: relato → perguntas que mudam a análise → caminhos com recomendação → registro (confiança, sinal de sucesso, data de revisão) → próximos passos com responsável e prazo.
 - Entrada por voz no navegador (Chrome, Edge e Safari). No Firefox, o botão do microfone não aparece.
 - Histórico, próximos passos na tela inicial, revisão com aprendizado e calibração.
