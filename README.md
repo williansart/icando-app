@@ -4,7 +4,7 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 
 ## O que tem nesta versão
 
-- Login por e-mail, sem senha (link ou código de 6 dígitos).
+- Login por e-mail, sem senha (link mágico).
 - Primeiro acesso em conversa, montando as 4 camadas de contexto.
 - Decisão guiada: relato → perguntas que mudam a análise → caminhos com recomendação → registro (confiança, sinal de sucesso, data de revisão) → próximos passos com responsável e prazo.
 - Entrada por voz no navegador (Chrome, Edge e Safari). No Firefox, o botão do microfone não aparece.
@@ -20,13 +20,7 @@ Sem a chave da Anthropic, o app roda em **modo demonstração**, com respostas s
 1. Crie um projeto em [supabase.com](https://supabase.com). Na região, escolha São Paulo.
 2. Em **SQL Editor → New query**, cole o conteúdo de `supabase/schema.sql` e clique em **Run**.
 3. Em **Project Settings → API**, copie a **Project URL** e a chave **anon public**.
-4. Em **Authentication → Email Templates → Magic Link**, troque o texto por:
-   ```
-   <h2>Seu acesso ao I Can Do</h2>
-   <p><a href="{{ .ConfirmationURL }}">Entrar no I Can Do</a></p>
-   <p>Ou digite este código no app: <b>{{ .Token }}</b></p>
-   ```
-   Isso permite entrar pelo código quando o link abre em outro navegador, como costuma acontecer no celular.
+4. (Opcional, exige SMTP próprio) Para personalizar o e-mail de login, configure um SMTP em **Authentication → SMTP Settings** e edite o template **Magic Link**. Sem isso, o e-mail padrão com o link "Sign in" funciona normalmente.
 5. Depois do passo 2 da Vercel, volte em **Authentication → URL Configuration**. Em **Site URL**, coloque o endereço da Vercel (ex.: `https://icando-app.vercel.app`). Em **Redirect URLs**, adicione o mesmo endereço.
 
 ### 2. Vercel (hospedagem)
