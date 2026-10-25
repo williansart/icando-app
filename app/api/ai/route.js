@@ -5,7 +5,7 @@ import { buildPrompt, mock, parseJSON, SYSTEM } from "../../../lib/ai";
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const KINDS = ["clarify", "decide", "actions", "review"];
+const KINDS = ["clarify", "decide", "actions", "review", "daily"];
 const fail = (status, code) => NextResponse.json({ code }, { status });
 
 export async function POST(req) {

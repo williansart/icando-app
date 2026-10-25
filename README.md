@@ -11,6 +11,8 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 - Histórico, próximos passos na tela inicial, revisão com aprendizado e calibração.
 - Perfil com o contexto guardado nas 4 camadas (cores por camada), editável por cartão.
 - My Mind: galáxia das decisões, pessoas e contexto, com conexões; o brilho mostra a relevância, que cai com o tempo, e as decisões revisadas ganham brilho de aprendizado.
+- Frase do dia: na primeira abertura de cada dia, uma frase de incentivo sobre liderança gerada pela IA a partir do cérebro do usuário (sem repetir as recentes).
+- Vídeo "Como funciona o I Can Do" no perfil.
 - Funciona como app no celular ("Adicionar à tela de início").
 
 Sem a chave da Anthropic, o app roda em **modo demonstração**, com respostas simuladas. Sem o Supabase, roda em **modo local**: sem login, e os dados ficam só no navegador.
