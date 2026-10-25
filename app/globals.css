@@ -21,6 +21,7 @@
   color-scheme:dark;}}
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{height:100%;margin:0}
 body{background:linear-gradient(160deg,var(--page),var(--page2));color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 .backdrop{display:none}
@@ -249,3 +250,66 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .sv{font-size:14px}
 .sv.muted{color:var(--muted)}
 .ob-foot{flex:none;padding-top:8px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+
+/* ---------- perfil: contexto guardado ---------- */
+.me-head{display:flex;align-items:center;gap:14px}
+.avatar{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:600;color:var(--on-accent);background:linear-gradient(135deg,var(--accent2),var(--accent));flex:none}
+.mh{display:grid;gap:1px;min-width:0}
+.mh b{font-size:19px;font-weight:600}
+.mh span{font-size:13.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mind-card{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;border:0;border-radius:22px;padding:16px;color:#EEF2FF;background:radial-gradient(120% 140% at 15% 20%,#3B4DB8 0%,#24195A 45%,#0A0E22 100%);box-shadow:0 10px 30px rgba(36,25,90,.35)}
+.mc-stars{position:absolute;inset:0;background-image:radial-gradient(1.2px 1.2px at 20% 30%,rgba(255,255,255,.9),transparent),radial-gradient(1px 1px at 70% 20%,rgba(255,255,255,.7),transparent),radial-gradient(1.4px 1.4px at 85% 70%,rgba(255,220,150,.9),transparent),radial-gradient(1px 1px at 40% 80%,rgba(200,180,255,.8),transparent),radial-gradient(1px 1px at 58% 45%,rgba(255,255,255,.6),transparent),radial-gradient(1.2px 1.2px at 92% 35%,rgba(160,200,255,.8),transparent);pointer-events:none}
+.mc-ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);flex:none;position:relative}
+.mc-ic svg{width:24px;height:24px}
+.mc-t{display:grid;gap:2px;flex:1;min-width:0;position:relative}
+.mc-t b{font-size:16px;font-weight:600}
+.mc-t span{font-size:12.5px;color:rgba(230,236,255,.75)}
+.mc-go{transform:rotate(180deg);opacity:.7;position:relative;display:grid}
+.mc-go svg{width:18px;height:18px}
+.ctx-card{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--L);border-radius:22px;padding:14px 16px 16px;display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+.ctx-card.editing{box-shadow:0 8px 28px var(--shadow)}
+.cc-h{display:flex;align-items:center;gap:12px}
+.cc-t{display:grid;gap:0;flex:1;min-width:0}
+.cc-t b{font-size:15px;font-weight:600;color:var(--L)}
+.cc-t span{font-size:12.5px;color:var(--muted)}
+.cc-edit{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500;cursor:pointer;flex:none}
+.cc-v{margin:0;display:grid;gap:4px}
+.cc-v dt{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:6px}
+.cc-v dt:first-child{margin-top:0}
+.cc-v dd{margin:0;font-size:14.5px;white-space:pre-wrap;overflow-wrap:anywhere}
+.cc-v dd.empty{color:var(--muted);font-style:italic}
+.pp{display:block;padding:2px 0}
+.pp b{font-weight:600}
+.cc-act{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* ---------- My Mind ---------- */
+.mind{position:absolute;inset:0;background:#05081A;color:#E8EEFF;display:flex;flex-direction:column;overflow:hidden;z-index:5}
+#mind-cv{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:pointer;touch-action:manipulation}
+.mind-h,.mind-stats,.mind-ex,.mind-legend,.mind-sheet{position:relative;z-index:2}
+.mind-h{padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.mind-h .hdr-c{color:#F2F5FF;font-size:16px}
+.mind-ic{display:grid;width:28px;height:28px;border-radius:50%;place-items:center;background:rgba(127,166,255,.18)}
+.mind-ic svg{width:17px;height:17px}
+.icon-btn.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#F2F5FF}
+.mind-stats{display:flex;justify-content:center;gap:16px;font-size:12.5px;color:rgba(220,228,255,.7);pointer-events:none}
+.mind-stats b{color:#fff;font-weight:600;font-size:14px;font-variant-numeric:tabular-nums}
+.mind-ex{margin:10px auto 0;font-size:12.5px;text-align:center;color:rgba(255,210,140,.9);max-width:300px;pointer-events:none}
+.mind-legend{margin-top:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;font-size:11.5px;color:rgba(220,228,255,.65);padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.mind-legend span{display:inline-flex;align-items:center;gap:6px}
+.mind-legend i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.lg-b{background:#6FA8FF;box-shadow:0 0 8px #6FA8FF}
+.lg-g{background:#FFC85A;box-shadow:0 0 8px #FFC85A}
+.lg-a{background:#FF9646;box-shadow:0 0 8px #FF9646}
+.mind-sheet{position:absolute;left:0;right:0;bottom:0;z-index:3;background:rgba(14,19,42,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.12);border-radius:24px 24px 0 0;padding-top:16px;padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;animation:up .22s ease-out}
+.mind-sheet h3{margin:0;font-size:18px;font-weight:600;color:#fff;padding-right:36px}
+.ms-k{margin:0;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#9DBBFF;font-weight:600}
+.ms-m,.ms-c,.ms-l{margin:0;font-size:13.5px;color:rgba(225,232,255,.78)}
+.ms-l b{color:#FFD27A;font-weight:600}
+.ms-rel{display:flex;align-items:center;gap:10px;font-size:12.5px;color:rgba(225,232,255,.7)}
+.ms-rel .bar{flex:1;height:6px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden}
+.ms-rel .bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#6FA8FF,#B394FF)}
+.ms-rel b{color:#fff;font-weight:600;width:44px;text-align:right}
+.ms-x{position:absolute;top:12px;right:max(16px,env(safe-area-inset-right,0px));width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+.ms-x svg{width:15px;height:15px}
+.mind-sheet .btn{margin-top:6px}
+.mind-sheet .btn.sec{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.18)}

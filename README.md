@@ -9,7 +9,8 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 - Decisão guiada: relato → perguntas que mudam a análise → caminhos com recomendação → registro (confiança, sinal de sucesso, data de revisão) → próximos passos com responsável e prazo.
 - Entrada por voz no navegador (Chrome, Edge e Safari). No Firefox, o botão do microfone não aparece.
 - Histórico, próximos passos na tela inicial, revisão com aprendizado e calibração.
-- Perfil editável com as 4 camadas e as pessoas ao redor.
+- Perfil com o contexto guardado nas 4 camadas (cores por camada), editável por cartão.
+- My Mind: galáxia das decisões, pessoas e contexto, com conexões; o brilho mostra a relevância, que cai com o tempo, e as decisões revisadas ganham brilho de aprendizado.
 - Funciona como app no celular ("Adicionar à tela de início").
 
 Sem a chave da Anthropic, o app roda em **modo demonstração**, com respostas simuladas. Sem o Supabase, roda em **modo local**: sem login, e os dados ficam só no navegador.
