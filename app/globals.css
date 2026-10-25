@@ -457,3 +457,15 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .br-link.rel-conflito{border-left-color:var(--warn)} .br-link.rel-conflito .br-rel{color:var(--warn)}
 .br-link.rel-aprendizado{border-left-color:#E3A008} .br-link.rel-aprendizado .br-rel{color:#B7791F}
 .br-aff{display:grid;gap:6px}
+
+/* ---------- Decision Quality ---------- */
+.dq{display:grid;gap:10px}
+.dq-h{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.dq-h b{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--l2)}
+.dq-h small{font-size:12px;color:var(--muted);font-weight:500}
+.dq-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center}
+.dqe-k{font-size:13.5px}
+.dq-b{display:flex;gap:4px}
+.dq-b i{width:26px;height:8px;border-radius:9px;background:var(--field);border:1px solid var(--line)}
+.dq-b i.on{background:var(--l2);border-color:var(--l2)}
+.dq-tip{margin:0;font-size:13px;color:var(--muted);background:var(--l2s);border-radius:12px;padding:8px 10px}
