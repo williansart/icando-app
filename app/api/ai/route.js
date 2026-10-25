@@ -5,7 +5,7 @@ import { buildPrompt, mock, parseJSON, SYSTEM } from "../../../lib/ai";
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const KINDS = ["clarify", "decide", "actions", "review", "daily"];
+const KINDS = ["clarify", "decide", "actions", "review", "daily", "report"];
 const fail = (status, code) => NextResponse.json({ code }, { status });
 
 export async function POST(req) {
@@ -47,7 +47,7 @@ export async function POST(req) {
       },
       body: JSON.stringify({
         model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5",
-        max_tokens: 2000,
+        max_tokens: kind === "report" ? 3000 : 2000,
         system: SYSTEM,
         messages: [{ role: "user", content: prompt }]
       })

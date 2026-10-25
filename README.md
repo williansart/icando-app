@@ -11,6 +11,8 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 - Histórico, próximos passos na tela inicial, revisão com aprendizado e calibração.
 - Perfil com o contexto guardado nas 4 camadas (cores por camada), editável por cartão.
 - My Mind: galáxia das decisões, pessoas e contexto, com conexões; o brilho mostra a relevância, que cai com o tempo, e as decisões revisadas ganham brilho de aprendizado.
+- Análise com método: cada pergunta e cada recomendação mostram o método da espinha dorsal que as sustenta (Decision Quality, 5 Porquês, Pre-mortem…). A decisão é sempre do usuário, e a ética vem acima de qualquer método, com alerta quando a situação toca em lei, ética ou direitos de pessoas.
+- Relatório pessoal (como decido: acerto, calibração, qualidade do processo, forças) e relatório de valor (o que as decisões entregaram: resultado por área, casos, operação sem centralizar, time, confiança), com análise da IA que só cita valores financeiros quando o usuário os registrou.
 - Frase do dia: na primeira abertura de cada dia, uma frase de incentivo sobre liderança gerada pela IA a partir do cérebro do usuário (sem repetir as recentes).
 - Vídeo "Como funciona o I Can Do" no perfil.
 - Funciona como app no celular ("Adicionar à tela de início").
