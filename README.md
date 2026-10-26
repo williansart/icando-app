@@ -20,7 +20,7 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 - Vídeo "Como funciona o I Can Do" no perfil.
 - Funciona como app no celular ("Adicionar à tela de início").
 
-Sem a chave da Anthropic, o app roda em **modo demonstração**, com respostas simuladas. Sem o Supabase, roda em **modo local**: sem login, e os dados ficam só no navegador.
+**IA:** com `ANTHROPIC_API_KEY`, o app usa o Claude. Sem ela e com `OPENAI_API_KEY`, usa a OpenAI (modelo em `OPENAI_MODEL`, padrão `gpt-5.5`, com troca automática para `chat-latest` se o modelo não estiver disponível). Ao colocar a chave da Anthropic, ela passa a valer sozinha. Sem nenhuma das duas, o app roda em **modo demonstração**, com respostas simuladas. Sem o Supabase, roda em **modo local**: sem login, e os dados ficam só no navegador.
 
 ## Publicar (cerca de 15 minutos)
 

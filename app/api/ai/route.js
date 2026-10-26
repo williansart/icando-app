@@ -27,8 +27,9 @@ export async function POST(req) {
     if (allow.length && !allow.includes((data.user.email || "").toLowerCase())) return fail(403, "not_allowed");
   }
 
-  // Sem chave da Anthropic, o app funciona em modo demonstração.
-  if (!process.env.ANTHROPIC_API_KEY) {
+  // Provedor: Anthropic (preferido) ou OpenAI (temporário). Sem nenhuma chave, modo demonstração.
+  const provider = process.env.ANTHROPIC_API_KEY ? "anthropic" : process.env.OPENAI_API_KEY ? "openai" : null;
+  if (!provider) {
     await new Promise(r => setTimeout(r, 700));
     return NextResponse.json({ demo: true, result: mock(kind, payload) });
   }
@@ -36,33 +37,50 @@ export async function POST(req) {
   const prompt = buildPrompt(kind, payload);
   if (!prompt) return fail(400, "invalid_request");
   if (prompt.length > 60000) return fail(413, "prompt_too_large");
+  const maxTokens = kind === "report" ? 3000 : 2000;
 
   try {
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
+    const text = provider === "anthropic" ? await callAnthropic(prompt, maxTokens) : await callOpenAI(prompt, maxTokens);
+    const result = parseJSON(text);
+    if (!result) return fail(502, "invalid_json");
+    return NextResponse.json({ result, provider });
+  } catch (e) {
+    console.error("AI route", provider, e && e.message);
+    return fail(e && e.rate ? 429 : 502, e && e.rate ? "rate_limited" : "upstream_error");
+  }
+}
+
+async function callAnthropic(prompt, maxTokens) {
+  const r = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "content-type": "application/json", "x-api-key": process.env.ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01" },
+    body: JSON.stringify({ model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5", max_tokens: maxTokens, system: SYSTEM, messages: [{ role: "user", content: prompt }] })
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw Object.assign(new Error("Anthropic " + r.status + " " + (j?.error?.message || "")), { rate: r.status === 429 || r.status === 529 });
+  return (j.content || []).filter(b => b.type === "text").map(b => b.text).join("\n");
+}
+
+async function callOpenAI(prompt, maxTokens) {
+  const models = [process.env.OPENAI_MODEL || "gpt-5.5", "chat-latest"].filter((m, i, a) => a.indexOf(m) === i);
+  let lastErr = null;
+  for (const model of models) {
+    const r = await fetch((process.env.OPENAI_BASE_URL || "https://api.openai.com/v1") + "/chat/completions", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01"
-      },
+      headers: { "content-type": "application/json", authorization: "Bearer " + process.env.OPENAI_API_KEY },
       body: JSON.stringify({
-        model: process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5",
-        max_tokens: kind === "report" ? 3000 : 2000,
-        system: SYSTEM,
-        messages: [{ role: "user", content: prompt }]
+        model,
+        messages: [{ role: "system", content: SYSTEM }, { role: "user", content: prompt + "\n\nResponda apenas com JSON válido." }],
+        response_format: { type: "json_object" },
+        max_completion_tokens: maxTokens * 2
       })
     });
     const j = await r.json().catch(() => ({}));
-    if (!r.ok) {
-      console.error("Anthropic API", r.status, j?.error?.message);
-      return fail(r.status === 429 || r.status === 529 ? 429 : 502, r.status === 429 || r.status === 529 ? "rate_limited" : "upstream_error");
-    }
-    const text = (j.content || []).filter(b => b.type === "text").map(b => b.text).join("\n");
-    const result = parseJSON(text);
-    if (!result) return fail(502, "invalid_json");
-    return NextResponse.json({ result });
-  } catch (e) {
-    console.error("AI route", e);
-    return fail(502, "upstream_error");
+    if (r.ok) return (j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) || "";
+    lastErr = Object.assign(new Error("OpenAI " + r.status + " " + model + " " + (j?.error?.message || "")), { rate: r.status === 429 });
+    const code = j?.error?.code || "";
+    // modelo indisponível para esta conta: tenta o próximo
+    if (!(r.status === 404 || code === "model_not_found" || (r.status === 400 && /model/i.test(j?.error?.message || "")))) break;
   }
+  throw lastErr;
 }
