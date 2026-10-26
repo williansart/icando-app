@@ -469,3 +469,26 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .dq-b i{width:26px;height:8px;border-radius:9px;background:var(--field);border:1px solid var(--line)}
 .dq-b i.on{background:var(--l2);border-color:var(--l2)}
 .dq-tip{margin:0;font-size:13px;color:var(--muted);background:var(--l2s);border-radius:12px;padding:8px 10px}
+
+/* trilha de raciocínio (etapas da IA) */
+.trail{margin-left:38px;display:grid;gap:6px;min-width:0;font-size:13.5px;color:var(--muted)}
+.tr-s{display:flex;align-items:center;gap:9px;min-width:0}
+.tr-s.now{animation:tr-in .35s ease both}
+.tr-i{flex:none;width:18px;height:18px;display:grid;place-items:center;color:var(--accent-text)}
+.tr-i svg{width:13px;height:13px}
+.tr-spin{width:12px;height:12px;border-radius:50%;border:2px solid var(--accent-line);border-top-color:var(--accent);animation:spin .8s linear infinite}
+.tr-shim{color:var(--ink);background:linear-gradient(90deg,var(--muted) 0%,var(--ink) 40%,var(--muted) 80%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:tr-shim 1.6s linear infinite}
+@keyframes tr-shim{from{background-position:120% 0}to{background-position:-100% 0}}
+@keyframes tr-in{from{opacity:0;transform:translateY(4px)}}
+.tr-head{display:flex;align-items:center;gap:9px;width:fit-content;max-width:100%;padding:5px 12px 5px 6px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);font:inherit;font-size:13px;cursor:pointer}
+.tr-head:hover{color:var(--ink);border-color:var(--accent-line)}
+.tr-n{font-size:12px;opacity:.7}
+.tr-car{transition:transform .2s;font-size:16px;line-height:1}
+.trail.open .tr-car{transform:rotate(90deg)}
+.tr-body{display:grid;gap:10px;margin:4px 0 2px 8px;padding-left:16px;border-left:2px solid var(--line);animation:tr-in .25s ease both}
+.tr-d{display:grid;gap:2px;min-width:0}
+.tr-d b{font-size:13px;font-weight:600;color:var(--ink)}
+.tr-d>span{font-size:12.5px;line-height:1.45;overflow-wrap:anywhere}
+.tr-link{display:grid;gap:1px;text-align:left;margin-top:4px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font:inherit;color:inherit;cursor:pointer}
+.tr-link b{font-size:13px;color:var(--ink)}.tr-link>span:last-child{font-size:12px}
+@media (prefers-reduced-motion: reduce){.tr-s.now,.tr-body{animation:none}.tr-shim{animation:none;-webkit-text-fill-color:currentColor;color:var(--ink)}}
