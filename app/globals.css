@@ -634,3 +634,10 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .inv-it:has(.inv-cp){grid-template-columns:minmax(0,1fr) auto auto auto}
 .inv-cp{border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-text);border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
 @media (max-width:420px){.inv-it:has(.inv-cp) .inv-d{display:none}}
+
+/* "Como funciona": mesma linguagem do card My Mind, em tons de azul */
+.mind-card.intro{background:radial-gradient(120% 140% at 15% 20%,#3F7BFF 0%,#1C2F86 45%,#0A0E22 100%);box-shadow:0 10px 30px rgba(28,47,134,.35)}
+.mind-card.intro .mc-stars{transform:scaleX(-1)}
+.mc-ic.play{background:rgba(255,255,255,.16)}
+.mc-ic.play svg{width:20px;height:20px;margin-left:2px}
+.mind-card:active{transform:scale(.99)}
