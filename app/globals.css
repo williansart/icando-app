@@ -550,3 +550,8 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 @media (prefers-color-scheme: dark){.dor-chip{background:#3A1E14;color:#FFB59A}}
 .talk-again{margin-top:6px}
 @media (prefers-reduced-motion: reduce){.treg.new{animation:none}}
+
+/* nomes das pessoas em destaque */
+.nm{font-weight:700;color:var(--l3)}
+.bubble.me .nm{color:#FFFFFF;background:rgba(255,255,255,.2);padding:0 5px;border-radius:6px}
+.note .nm,.alt .nm,.act .nm,.tr-d .nm{color:var(--l3)}
