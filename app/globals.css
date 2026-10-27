@@ -631,3 +631,6 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .inv-acc{font-size:13px;color:var(--muted)}
 .inv-acc summary{cursor:pointer;color:var(--ok,var(--accent-text));font-weight:500;padding:4px 0}
 .inv-acc .inv-it{margin-top:6px}
+.inv-it:has(.inv-cp){grid-template-columns:minmax(0,1fr) auto auto auto}
+.inv-cp{border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent-text);border-radius:999px;padding:5px 10px;font:inherit;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap}
+@media (max-width:420px){.inv-it:has(.inv-cp) .inv-d{display:none}}
