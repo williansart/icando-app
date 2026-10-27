@@ -503,3 +503,17 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .pplc-a{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .pplc .btn.sm,.btn.sm{width:auto;min-height:0;padding:8px 14px;font-size:13.5px;border-radius:999px}
 @media (prefers-reduced-motion: reduce){.pplc{animation:none}}
+
+/* contador de dias até a revisão */
+.pill.cd{display:inline-flex;align-items:center;gap:5px;font-variant-numeric:tabular-nums}
+.pill.cd svg{width:12px;height:12px;flex:none}
+.pill.cd.soon{background:var(--warn-soft);color:var(--warn)}
+.revc{display:flex;align-items:center;gap:14px;margin-top:4px}
+.revc-n{min-width:56px;height:56px;padding:0 10px;border-radius:16px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent-text);font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.revc.due .revc-n{background:var(--warn-soft);color:var(--warn);font-size:18px}
+.revc-t{display:grid;gap:2px}
+.revc-t b{font-size:15px;font-weight:600}
+.revc-t span{font-size:13px;color:var(--muted)}
+.revbar{height:6px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:12px}
+.revbar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--accent2),var(--accent))}
+.revc.due + .revbar i{background:var(--warn)}
