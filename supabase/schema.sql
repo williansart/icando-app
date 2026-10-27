@@ -26,3 +26,24 @@ create policy "perfil proprio" on public.profiles
 drop policy if exists "decisoes proprias" on public.decisions;
 create policy "decisoes proprias" on public.decisions
   for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- Convites: quem pode usar a IA, gerenciado de dentro do app (perfil > Convites).
+-- Troque o e-mail abaixo se o administrador mudar.
+create or replace function public.is_admin() returns boolean
+  language sql stable as $$ select lower(coalesce(auth.jwt() ->> 'email', '')) = 'williansart@gmail.com' $$;
+
+create table if not exists public.invites (
+  email text primary key check (email = lower(email)),
+  invited_by uuid default auth.uid(),
+  created_at timestamptz not null default now()
+);
+alter table public.invites enable row level security;
+
+-- O administrador vê e gerencia todos; cada pessoa só consegue ver o próprio convite.
+drop policy if exists "convites leitura" on public.invites;
+create policy "convites leitura" on public.invites
+  for select using (public.is_admin() or email = lower(coalesce(auth.jwt() ->> 'email', '')));
+drop policy if exists "convites admin cria" on public.invites;
+create policy "convites admin cria" on public.invites for insert with check (public.is_admin());
+drop policy if exists "convites admin remove" on public.invites;
+create policy "convites admin remove" on public.invites for delete using (public.is_admin());

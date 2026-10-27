@@ -23,8 +23,14 @@ export async function POST(req) {
     const sb = createClient(url, anon, { auth: { persistSession: false, autoRefreshToken: false } });
     const { data, error } = await sb.auth.getUser(token);
     if (error || !data?.user) return fail(401, "unauthorized");
+    const email = (data.user.email || "").toLowerCase();
     const allow = (process.env.ALLOWED_EMAILS || "").split(",").map(e => e.trim().toLowerCase()).filter(Boolean);
-    if (allow.length && !allow.includes((data.user.email || "").toLowerCase())) return fail(403, "not_allowed");
+    if (allow.length && !allow.includes(email)) {
+      // convites feitos dentro do app (tabela invites, protegida por RLS: a pessoa só enxerga o próprio convite)
+      const asUser = createClient(url, anon, { auth: { persistSession: false, autoRefreshToken: false }, global: { headers: { Authorization: "Bearer " + token } } });
+      const { data: inv } = await asUser.from("invites").select("email").eq("email", email).maybeSingle();
+      if (!inv) return fail(403, "not_allowed");
+    }
   }
 
   // Provedor: Anthropic (preferido) ou OpenAI (temporário). Sem nenhuma chave, modo demonstração.

@@ -45,7 +45,8 @@ Copiloto de decisões para líderes. O ciclo é Capture → Clarify → Decide �
 3. Clique em **Deploy**. A cada novo envio para o GitHub, a Vercel publica a versão nova sozinha.
 
 ### 3. Convidar testadores
-Coloque o e-mail da pessoa em `ALLOWED_EMAILS` (Vercel → Settings → Environment Variables) e clique em **Redeploy**. Depois, é só mandar o link. Cada pessoa vê apenas as próprias decisões.
+Pelo app: no seu perfil, em **Convites**, digite o e-mail e toque em **Liberar**. Vale na hora, sem Redeploy. (Precisa ter rodado a parte "Convites" do `supabase/schema.sql`; o administrador é definido na função `is_admin()`.)
+Alternativa: coloque o e-mail em `ALLOWED_EMAILS` na Vercel e faça **Redeploy**. Cada pessoa vê apenas as próprias decisões.
 
 **Limite de e-mails:** o envio de e-mails padrão do Supabase permite poucos e-mails por hora. Para mais testadores, configure um SMTP próprio (Resend, por exemplo) em **Authentication → SMTP Settings**.
 

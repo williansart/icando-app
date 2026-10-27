@@ -559,3 +559,13 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 /* estado vazio */
 .empty-st{display:grid;gap:4px;text-align:center;padding:28px 20px;border:1px dashed var(--line);border-radius:20px;color:var(--muted);font-size:14px;line-height:1.45}
 .empty-st b{color:var(--ink);font-size:15px;font-weight:600}
+
+/* convites */
+.inv{display:grid;gap:12px}
+.inv-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.inv-row .btn{width:auto;min-height:48px;padding:0 20px}
+.inv-msg{margin:0;font-size:13.5px;color:var(--accent-text)}
+.inv-list{display:grid;gap:6px}
+.inv-it{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:8px 8px 8px 14px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.inv-e{font-size:14px;font-weight:500;overflow-wrap:anywhere}
+.inv-d{font-size:12px;color:var(--muted)}
