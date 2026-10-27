@@ -81,3 +81,24 @@ language sql stable security definer set search_path = public as $$
 $$;
 revoke all on function public.admin_usage() from public, anon;
 grant execute on function public.admin_usage() to authenticated;
+
+-- Convites: validação antes do login e status (pendente/aceito) para o administrador.
+create or replace function public.can_sign_in(p_email text) returns boolean
+  language sql stable security definer set search_path = public as $$
+  select lower(trim(p_email)) = 'williansart@gmail.com'
+      or exists (select 1 from public.invites i where i.email = lower(trim(p_email)))
+$$;
+revoke all on function public.can_sign_in(text) from public;
+grant execute on function public.can_sign_in(text) to anon, authenticated;
+
+create or replace function public.admin_invites()
+returns table (email text, created_at timestamptz, aceito_em timestamptz)
+language sql stable security definer set search_path = public as $$
+  select i.email, i.created_at,
+         (select min(u.email_confirmed_at) from auth.users u where lower(u.email) = i.email and u.last_sign_in_at is not null)
+  from public.invites i
+  where public.is_admin()
+  order by i.created_at desc;
+$$;
+revoke all on function public.admin_invites() from public, anon;
+grant execute on function public.admin_invites() to authenticated;

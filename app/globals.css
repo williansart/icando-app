@@ -627,3 +627,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .cmp-t span{font-size:13px;line-height:1.4;color:var(--muted)}
 .cmp-miss{display:flex;flex-wrap:wrap;gap:6px}
 .cmp-chip{font-size:12.5px;padding:4px 10px;border-radius:999px;background:var(--Ls);color:var(--L);font-weight:500}
+.inv-sub{margin:0;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.inv-acc{font-size:13px;color:var(--muted)}
+.inv-acc summary{cursor:pointer;color:var(--ok,var(--accent-text));font-weight:500;padding:4px 0}
+.inv-acc .inv-it{margin-top:6px}
