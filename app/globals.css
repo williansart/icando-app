@@ -641,3 +641,25 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .mc-ic.play{background:rgba(255,255,255,.16)}
 .mc-ic.play svg{width:20px;height:20px;margin-left:2px}
 .mind-card:active{transform:scale(.99)}
+
+/* apagar dados: confirmação e aviso */
+.btn.sec.danger-t{color:var(--warn)}
+.reset-sheet{padding-inline:20px}
+.rs-head{display:flex;align-items:center;gap:14px}
+.rs-ic{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:var(--warn-soft);color:var(--warn);flex:none}
+.rs-ic svg{width:24px;height:24px}
+.rs-head>span:last-child{display:grid;gap:2px}
+.rs-head b{font-size:18px;font-weight:600}
+.rs-head>span:last-child>span{font-size:13px;color:var(--warn);font-weight:500}
+.rs-p{margin:0;font-size:14px}
+.rs-list{margin:0;padding-left:20px;display:grid;gap:6px;font-size:14px;color:var(--ink)}
+.rs-list li::marker{color:var(--warn)}
+.rs-act{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.toast{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:40;max-width:calc(100% - 32px);padding:12px 18px;border-radius:16px;background:var(--ink);color:var(--surface);font-size:14px;font-weight:500;box-shadow:0 12px 32px rgba(0,0,0,.25);animation:enter .3s ease-out}
+.empty-st .btn{margin-top:10px}
+.reset-sheet .btn.danger{background:var(--warn);color:#fff;border-color:var(--warn)}
+
+/* My Mind e Como funciona: mesma altura e mais próximos */
+.cards2{display:grid;gap:10px}
+.cards2 .mind-card{height:84px;min-height:0}
+.cards2 .mc-t span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
