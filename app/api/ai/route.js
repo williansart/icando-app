@@ -15,6 +15,7 @@ export async function POST(req) {
   if (!KINDS.includes(kind)) return fail(400, "invalid_request");
 
   // Com Supabase configurado, só quem está logado (e liberado) usa a IA.
+  let logUse = null;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (url && anon) {
@@ -24,10 +25,12 @@ export async function POST(req) {
     const { data, error } = await sb.auth.getUser(token);
     if (error || !data?.user) return fail(401, "unauthorized");
     const email = (data.user.email || "").toLowerCase();
+    const asUser = createClient(url, anon, { auth: { persistSession: false, autoRefreshToken: false }, global: { headers: { Authorization: "Bearer " + token } } });
+    // métrica de uso: só o tipo de chamada, nunca o conteúdo
+    logUse = k => asUser.from("usage_events").insert({ kind: k }).then(() => {}, () => {});
     const allow = (process.env.ALLOWED_EMAILS || "").split(",").map(e => e.trim().toLowerCase()).filter(Boolean);
     if (allow.length && !allow.includes(email)) {
       // convites feitos dentro do app (tabela invites, protegida por RLS: a pessoa só enxerga o próprio convite)
-      const asUser = createClient(url, anon, { auth: { persistSession: false, autoRefreshToken: false }, global: { headers: { Authorization: "Bearer " + token } } });
       const { data: inv } = await asUser.from("invites").select("email").eq("email", email).maybeSingle();
       if (!inv) return fail(403, "not_allowed");
     }
@@ -49,6 +52,7 @@ export async function POST(req) {
     const text = provider === "anthropic" ? await callAnthropic(prompt, maxTokens) : await callOpenAI(prompt, maxTokens);
     const result = parseJSON(text);
     if (!result) return fail(502, "invalid_json");
+    if (logUse) await logUse(kind);
     return NextResponse.json({ result, provider });
   } catch (e) {
     console.error("AI route", provider, e && e.message);

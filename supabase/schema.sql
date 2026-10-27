@@ -47,3 +47,37 @@ drop policy if exists "convites admin cria" on public.invites;
 create policy "convites admin cria" on public.invites for insert with check (public.is_admin());
 drop policy if exists "convites admin remove" on public.invites;
 create policy "convites admin remove" on public.invites for delete using (public.is_admin());
+
+-- Métricas de uso (só números, nunca o conteúdo das decisões).
+create table if not exists public.usage_events (
+  id bigint generated always as identity primary key,
+  user_id uuid not null default auth.uid() references auth.users on delete cascade,
+  kind text not null check (char_length(kind) <= 20),
+  created_at timestamptz not null default now()
+);
+create index if not exists usage_events_user_time on public.usage_events (user_id, created_at desc);
+alter table public.usage_events enable row level security;
+drop policy if exists "uso registra o proprio" on public.usage_events;
+create policy "uso registra o proprio" on public.usage_events for insert with check (auth.uid() = user_id);
+
+-- Resumo por pessoa, visível só para o administrador.
+create or replace function public.admin_usage()
+returns table (email text, ultimo_login timestamptz, ultima_atividade timestamptz, decisoes int, decisoes_7d int,
+               revisadas int, usos_ia int, usos_ia_7d int, dias_ativos_30d int, perfil boolean)
+language sql stable security definer set search_path = public as $$
+  select u.email::text,
+         u.last_sign_in_at,
+         (select max(e.created_at) from public.usage_events e where e.user_id = u.id),
+         (select count(*) from public.decisions d where d.user_id = u.id)::int,
+         (select count(*) from public.decisions d where d.user_id = u.id and d.created_at > now() - interval '7 days')::int,
+         (select count(*) from public.decisions d where d.user_id = u.id and jsonb_typeof(d.data -> 'revisao') = 'object')::int,
+         (select count(*) from public.usage_events e where e.user_id = u.id and e.kind <> 'abriu')::int,
+         (select count(*) from public.usage_events e where e.user_id = u.id and e.kind <> 'abriu' and e.created_at > now() - interval '7 days')::int,
+         (select count(distinct (e.created_at at time zone 'America/Sao_Paulo')::date) from public.usage_events e where e.user_id = u.id and e.created_at > now() - interval '30 days')::int,
+         exists (select 1 from public.profiles p where p.user_id = u.id)
+  from auth.users u
+  where public.is_admin()
+  order by 3 desc nulls last, u.last_sign_in_at desc nulls last;
+$$;
+revoke all on function public.admin_usage() from public, anon;
+grant execute on function public.admin_usage() to authenticated;
