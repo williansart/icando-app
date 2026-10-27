@@ -555,3 +555,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .nm{font-weight:700;color:var(--l3)}
 .bubble.me .nm{color:#FFFFFF;background:rgba(255,255,255,.2);padding:0 5px;border-radius:6px}
 .note .nm,.alt .nm,.act .nm,.tr-d .nm{color:var(--l3)}
+
+/* estado vazio */
+.empty-st{display:grid;gap:4px;text-align:center;padding:28px 20px;border:1px dashed var(--line);border-radius:20px;color:var(--muted);font-size:14px;line-height:1.45}
+.empty-st b{color:var(--ink);font-size:15px;font-weight:600}
