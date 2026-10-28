@@ -735,3 +735,26 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .mood .dodo{width:1.6em;height:1.6em;transition:transform .25s cubic-bezier(.34,1.6,.5,1)}
 .mood.on .dodo,.mood:hover .dodo{transform:scale(1.12) rotate(-4deg)}
 .hm-e .dodo{width:1.45em;height:1.45em}
+
+/* abertura com o Dodô */
+.boot{position:fixed;inset:0;z-index:100;display:grid;place-items:center;align-content:center;gap:10px;background:linear-gradient(160deg,var(--page),var(--page2));color:var(--muted);transition:opacity .45s ease,transform .45s ease}
+.boot.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.boot b{color:var(--ink);font-size:19px;font-weight:600;letter-spacing:-.01em;margin-top:4px}
+.boot-dodo{position:relative;width:132px;height:150px}
+.boot-body{position:absolute;left:0;bottom:14px;width:132px;height:132px;transform-origin:50% 100%;animation:dodoHop 1.25s cubic-bezier(.45,0,.55,1) infinite}
+.boot-body img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(20,30,90,.18))}
+.boot-body .b-blink{opacity:0;animation:dodoBlink 3.75s steps(1,end) infinite}
+.boot-body .b-open{animation:dodoOpen 3.75s steps(1,end) infinite}
+.boot-shadow{position:absolute;left:50%;bottom:6px;width:84px;height:12px;margin-left:-42px;border-radius:50%;background:rgba(30,50,140,.18);filter:blur(2px);animation:dodoShadow 1.25s cubic-bezier(.45,0,.55,1) infinite}
+.boot-spark{position:absolute;width:10px;height:10px;background:#FFB347;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);opacity:0;animation:dodoSpark 2.5s ease-in-out infinite}
+.boot-spark.s1{right:2px;top:18px}.boot-spark.s2{right:-10px;top:44px;width:7px;height:7px;animation-delay:.4s}.boot-spark.s3{left:2px;top:30px;width:8px;height:8px;background:#6AB0FF;animation-delay:1.1s}
+.boot-dots{display:flex;gap:6px}
+.boot-dots i{width:7px;height:7px;border-radius:50%;background:#2F7BFF;opacity:.3;animation:dodoDot 1.25s ease-in-out infinite}
+.boot-dots i:nth-child(2){animation-delay:.18s}.boot-dots i:nth-child(3){animation-delay:.36s}
+@keyframes dodoHop{0%,100%{transform:translateY(0) scale(1.05,.94)}12%{transform:translateY(0) scale(.97,1.04)}45%{transform:translateY(-22px) scale(1,1)}55%{transform:translateY(-22px) rotate(-3deg)}88%{transform:translateY(0) scale(1.02,.98)}}
+@keyframes dodoShadow{0%,100%{transform:scale(1);opacity:1}45%,55%{transform:scale(.62);opacity:.55}}
+@keyframes dodoBlink{0%,62%{opacity:0}63%,70%{opacity:1}71%,100%{opacity:0}}
+@keyframes dodoOpen{0%,62%{opacity:1}63%,70%{opacity:0}71%,100%{opacity:1}}
+@keyframes dodoSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0)}40%{opacity:1;transform:scale(1) rotate(45deg)}70%{opacity:0;transform:scale(.6) rotate(90deg)}}
+@keyframes dodoDot{0%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.boot-body,.boot-shadow,.boot-spark,.boot-dots i,.boot-body img{animation:none}.boot-body .b-blink{opacity:0}}
