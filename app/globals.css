@@ -135,6 +135,28 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .chosen svg{width:18px;height:18px;flex:none}
 
 .acts{display:grid;gap:8px}
+.actw{display:grid;gap:0;min-width:0}
+.actw:has(.comm) .act{border-bottom-left-radius:6px;border-bottom-right-radius:6px}
+.comm{margin:3px 0 0;border:1px solid rgba(124,77,219,.22);border-radius:6px 6px 16px 16px;background:linear-gradient(180deg,var(--l3s),var(--surface));overflow:hidden}
+.comm-h{display:flex;align-items:center;gap:8px;width:100%;padding:9px 12px;border:0;background:none;font:inherit;font-size:13px;color:var(--ink);text-align:left;cursor:pointer}
+.comm-h svg{width:16px;height:16px;flex:none;color:var(--l3)}
+.comm-h span:first-of-type{flex:1;min-width:0}
+.comm-c{flex:none;font-size:11.5px;font-weight:600;color:var(--l3);background:var(--surface);border:1px solid rgba(124,77,219,.25);padding:3px 9px;border-radius:999px}
+.comm-b{display:grid;gap:10px;padding:2px 12px 12px}
+.comm-q{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+.comm-q b{color:var(--ink);font-weight:600}
+.comm-m{margin:0;padding:10px 12px;border-left:3px solid var(--l3);background:var(--surface);border-radius:4px 12px 12px 4px;font-size:14px;line-height:1.5;color:var(--ink)}
+.comm-a{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.comm-n{font-size:12px;color:var(--muted)}
+.steps-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.steps-n{font-size:12.5px;color:var(--muted);font-weight:600}
+.rd-n{display:grid;gap:2px;margin-top:2px;padding:8px 10px;border-radius:12px;background:var(--l2s);text-align:left;min-width:0}
+.rd-n.ok{display:flex;align-items:center;gap:6px;background:var(--l1s);color:var(--l1);font-size:12.5px;font-weight:600}
+.rd-n.ok svg{width:14px;height:14px}
+.rd-nl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--l2)}
+.rd-nt{font-size:13.5px;color:var(--ink);font-weight:500}
+.rd-nd{font-size:12px;color:var(--muted)}
+.rd-nd.late{color:var(--danger,#D64545)}
 .act{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1px solid var(--line);border-radius:16px;padding:11px 12px;background:var(--surface);width:100%;cursor:pointer}
 .box{width:22px;height:22px;border-radius:7px;border:2px solid var(--line);flex:none;display:grid;place-items:center;margin-top:1px}
 .box svg{width:14px;height:14px}
