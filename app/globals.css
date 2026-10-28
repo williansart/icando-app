@@ -501,6 +501,13 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .pplc-t span{flex:1;min-width:0}
 .pplc .chipp{padding:5px 12px;font-size:13px}
 .pplc-a{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pplr{display:grid;gap:8px;padding-top:2px;min-width:0}
+.pplr-n{margin:0;font-size:13.5px;color:var(--ink-2,var(--ink))}
+.pplr-n b{color:var(--l3);font-weight:700}
+.relcs{display:flex;flex-wrap:wrap;gap:6px}
+.relc{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-size:12.5px;padding:6px 11px;border-radius:999px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.relc[aria-pressed="true"]{background:var(--l3);border-color:var(--l3);color:#fff}
+.pplr .field.sm{min-height:0;padding:9px 12px;font-size:14px;border-radius:12px}
 .pplc .btn.sm,.btn.sm{width:auto;min-height:0;padding:8px 14px;font-size:13.5px;border-radius:999px}
 @media (prefers-reduced-motion: reduce){.pplc{animation:none}}
 
