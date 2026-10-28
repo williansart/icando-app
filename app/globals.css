@@ -758,3 +758,34 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 @keyframes dodoSpark{0%,100%{opacity:0;transform:scale(.3) rotate(0)}40%{opacity:1;transform:scale(1) rotate(45deg)}70%{opacity:0;transform:scale(.6) rotate(90deg)}}
 @keyframes dodoDot{0%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
 @media (prefers-reduced-motion:reduce){.boot-body,.boot-shadow,.boot-spark,.boot-dots i,.boot-body img{animation:none}.boot-body .b-blink{opacity:0}}
+
+/* Resolva agora: bloco de impacto para casos urgentes */
+.agora{display:grid;gap:10px;padding:16px;border-radius:22px;color:#2A1300;background:linear-gradient(140deg,#FFC15E 0%,#FF9A3D 55%,#FF7A45 100%);box-shadow:0 14px 34px rgba(255,122,69,.32);position:relative;overflow:hidden;animation:tr-in .35s ease both}
+.agora::after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.45),transparent);pointer-events:none}
+.ag-top{display:flex;align-items:center;gap:8px}
+.ag-bolt{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#2A1300;color:#FFC15E;flex:none}
+.ag-bolt svg{width:16px;height:16px}
+.ag-k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ag-h{margin-left:auto;font-size:12px;font-weight:600;background:rgba(42,19,0,.12);padding:3px 10px;border-radius:999px}
+.ag-t{margin:0;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:-.01em}
+.ag-a{margin:0;font-size:14.5px;line-height:1.45}
+.ag-list{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14px;font-weight:500}
+.ag-steps{display:grid;gap:6px}
+.ag-step{display:flex;gap:10px;align-items:center;text-align:left;width:100%;border:0;border-radius:14px;padding:9px 11px;background:rgba(255,255,255,.55);color:#2A1300;font:inherit;font-size:14px;font-weight:500;cursor:pointer}
+.ag-step .box{width:20px;height:20px;border-radius:6px;border:2px solid #2A1300;display:grid;place-items:center;flex:none}
+.ag-step .box svg{width:13px;height:13px}
+.ag-step.done{opacity:.6}.ag-step.done span:last-child{text-decoration:line-through}
+.ag-step.done .box{background:#2A1300;color:#FFC15E}
+.ag-msg{display:grid;gap:6px;padding:11px 12px;border-radius:14px;background:rgba(255,255,255,.72)}
+.ag-ml{font-size:12px;font-weight:600;color:#6B3A10}
+.ag-msg p{margin:0;font-size:14px;line-height:1.5}
+.ag-msg .linkbtn{justify-self:start;color:#B4430F}
+.agora .nm{color:#7A2E00}
+.ag-nr{margin:0;font-size:13px;line-height:1.45;padding-top:8px;border-top:1px dashed rgba(42,19,0,.25)}
+.ideal-h{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.urg{display:inline-flex;width:max-content;max-width:100%;justify-self:start;align-self:flex-start;align-items:center;gap:6px;margin:0 0 8px 4px;border:1px solid rgba(255,122,69,.35);background:var(--surface);color:#D9581F;font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.urg svg{width:14px;height:14px}
+.urg.on{background:linear-gradient(140deg,#FFC15E,#FF7A45);color:#2A1300;border-color:transparent;box-shadow:0 6px 16px rgba(255,122,69,.35)}
+.composer.urgent{box-shadow:0 0 0 2px rgba(255,122,69,.55),0 10px 28px rgba(255,122,69,.18)}
+.rd-n.ag{background:linear-gradient(140deg,rgba(255,193,94,.35),rgba(255,122,69,.25))}
+.rd-n.ag .rd-nl{color:#C2410C}
