@@ -729,3 +729,9 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .hm-bar b{text-align:right}
 .hm-pats{margin:0;padding-left:18px;display:grid;gap:8px;font-size:14px;line-height:1.45}
 .hm-priv{text-align:center}
+
+/* Dodô no lugar dos emojis de humor */
+.dodo{width:1.7em;height:1.7em;object-fit:contain;display:block;margin:0 auto;pointer-events:none;user-select:none;filter:drop-shadow(0 2px 3px rgba(20,30,90,.18))}
+.mood .dodo{width:1.6em;height:1.6em;transition:transform .25s cubic-bezier(.34,1.6,.5,1)}
+.mood.on .dodo,.mood:hover .dodo{transform:scale(1.12) rotate(-4deg)}
+.hm-e .dodo{width:1.45em;height:1.45em}
