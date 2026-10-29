@@ -766,7 +766,7 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .ag-bolt{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#2A1300;color:#FFC15E;flex:none}
 .ag-bolt svg{width:16px;height:16px}
 .ag-k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.ag-h{margin-left:auto;font-size:12px;font-weight:600;background:rgba(42,19,0,.12);padding:3px 10px;border-radius:999px}
+.ag-h{margin-left:auto;white-space:nowrap;flex:none;font-size:12px;font-weight:600;background:rgba(42,19,0,.12);padding:3px 10px;border-radius:999px}
 .ag-t{margin:0;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:-.01em}
 .ag-a{margin:0;font-size:14.5px;line-height:1.45}
 .ag-list{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14px;font-weight:500}
@@ -782,10 +782,5 @@ button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px soli
 .ag-msg .linkbtn{justify-self:start;color:#B4430F}
 .agora .nm{color:#7A2E00}
 .ag-nr{margin:0;font-size:13px;line-height:1.45;padding-top:8px;border-top:1px dashed rgba(42,19,0,.25)}
-.ideal-h{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.urg{display:inline-flex;width:max-content;max-width:100%;justify-self:start;align-self:flex-start;align-items:center;gap:6px;margin:0 0 8px 4px;border:1px solid rgba(255,122,69,.35);background:var(--surface);color:#D9581F;font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
-.urg svg{width:14px;height:14px}
-.urg.on{background:linear-gradient(140deg,#FFC15E,#FF7A45);color:#2A1300;border-color:transparent;box-shadow:0 6px 16px rgba(255,122,69,.35)}
-.composer.urgent{box-shadow:0 0 0 2px rgba(255,122,69,.55),0 10px 28px rgba(255,122,69,.18)}
 .rd-n.ag{background:linear-gradient(140deg,rgba(255,193,94,.35),rgba(255,122,69,.25))}
 .rd-n.ag .rd-nl{color:#C2410C}
